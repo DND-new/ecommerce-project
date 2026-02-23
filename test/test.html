@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Test</title>
+    <style>
+      .title{
+        font-size: 25px
+      }
+
+      .email-input{
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        border-width: 1px;
+        width: 200px;
+      }
+
+      .password-input{
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        border-width: 1px;
+        width: 200px;
+      }
+
+      .login-button{
+        background-color: rgb(0,123,255);
+        color: white;
+        border: none;
+        padding: 10px 13px;
+        border-radius: 5px;
+        margin-right: 5px;
+      }
+
+      .signup-button{
+        background-color: rgb(0,123,255);
+        color: white;
+        border: none;
+        padding: 10px 13px;
+        border-radius: 5px;
+      }
+
+      .counter-button{
+        background-color: rgb(25, 135, 84);
+        border: 1px;
+        margin: 5px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: white;
+      }
+
+      .counter-container{
+        display: flex;
+        height: 100vh;
+        background-color: rgb(222, 222, 222);
+        align-items: center;
+        justify-content: center;
+      }
+
+      body{
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script type="text/babel"> 
+
+     /* function LoginForm(){
+        const [isButtonShow, setIsButtonShow] = React.useState(true)
+        
+        const [time, setTime] = React.useState(dayjs().format("HH:mm:ss"));
+        // const currentTimeRef = React.useRef(time);
+        React.useEffect(() => {
+            
+              setInterval(() => { 
+              console.log('test')
+              setTime(dayjs().format("HH:mm:ss"))
+              
+             }, 1000)
+            }, [])
+        
+        return(
+         
+           
+        <div className="app-container">
+          <p className="title">{time}</p>
+
+          <div>
+            <input 
+              placeholder="Email" 
+              className="email-input" 
+            />
+          </div>
+          <div>
+            <input 
+              placeholder="Password" 
+              className="password-input"
+              type={isButtonShow ? 'password' : 'text'}
+            />
+            <button onClick={() => setIsButtonShow(!isButtonShow)}>{isButtonShow ? 'Show' : 'Hide'}</button>
+          </div>
+          <div>
+            <button className="login-button">Login</button>
+            <button className="signup-button">Sign up</button>
+          </div>
+        </div>
+        )
+      }*/
+
+      function Counter({ count, setCount }){
+        const autoCountRef = React.useRef(0);
+
+        function Count(){
+          setCount(count + 1);
+        }
+
+        function resetCount(){
+          setCount(0);
+        }
+
+        function autoCount(){
+          setInterval(() =>{
+            autoCountRef.current = autoCountRef.current + 1;
+            setCount(autoCountRef.current)
+          }, 1000)
+          
+        }
+
+        return(
+            <div className="counter-container">
+              <button onClick={Count} className="counter-button">Clicked {count} time</button>
+              <button onClick={resetCount} className="counter-button">Reset</button>
+              <button onClick={autoCount} className="counter-button">Auto Click</button>
+            </div>
+        )
+    }
+      function App(){
+        const [count, setCount] = React.useState(0);
+        
+
+        return (
+          <>
+            <Counter count={count} setCount={setCount}/>
+        
+          </>
+      )
+      }
+
+    const container =  document.querySelector('.js-container');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />)
+  
+     
+    </script>
+  </body>
+</html>

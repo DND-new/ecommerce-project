@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <title>test</title>
+    <style>
+      .on-button {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+      }
+
+      .off-button {
+        background-color: rgb(220, 53, 69);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      function App() {
+        const [isButtonOn, setIsButtonOn] = React.useState(true);
+
+        return (
+          <>
+            <button
+              className={isButtonOn ? "on-button" : "off-button"}
+              onClick={() => setIsButtonOn(!isButtonOn)}
+            >
+              {isButtonOn ? "ON" : "OFF"}
+            </button>
+          </>
+        );
+      }
+
+      ReactDOM.createRoot(document.querySelector(".js-container")).render(
+        <App />,
+      );
+    </script>
+  </body>
+</html>
