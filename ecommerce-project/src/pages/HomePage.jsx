@@ -1,9 +1,19 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { Header } from "../components/Header";
-import { products } from "../../starting-code/data/products";
+//import { products } from "../../starting-code/data/products";
 import CheckMark from "../assets/images/icons/checkmark.png";
 import "./HomePage.css";
 
 export function HomePage() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/products").then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
+
   return (
     <>
       <title>Ecommerce Project</title>
