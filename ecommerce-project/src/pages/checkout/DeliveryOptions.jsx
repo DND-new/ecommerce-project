@@ -22,7 +22,6 @@ export function DeliveryOptions({ deliveryOptions, cartItem, loadCart }) {
           await loadCart();
         };
 
-        console.log(deliveryOption.id);
         return (
           <div
             key={deliveryOption.id}
