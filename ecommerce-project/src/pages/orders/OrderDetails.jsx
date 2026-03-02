@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { Fragment } from "react";
 import BuyAgain from "../../assets/images/icons/buy-again.png";
 
-export function OrderDetails({ order }) {
+export function OrderDetails({ order, deliveryPercent }) {
   return (
     <div className="order-details-grid">
       {order.products.map((orderProduct) => {
@@ -16,7 +16,6 @@ export function OrderDetails({ order }) {
             <div className="product-details">
               <div className="product-name">{orderProduct.product.name}</div>
               <div className="product-delivery-date">
-                Arriving on:{" "}
                 {dayjs(orderProduct.estimatedDeliveryTimeMs).format("MMMM D")}
               </div>
               <div className="product-quantity">
@@ -29,7 +28,7 @@ export function OrderDetails({ order }) {
             </div>
 
             <div className="product-actions">
-              <Link to="/tracking">
+              <Link to={`/tracking/${order.id}/${orderProduct.product.id}`}>
                 <button className="track-package-button button-secondary">
                   Track package
                 </button>

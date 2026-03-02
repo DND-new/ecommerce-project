@@ -2,7 +2,7 @@ import { formatMoney } from "../../utils/formatMoney";
 
 export function CartItemDetails({ cartItem }) {
   return (
-    <div className="cart-item-details-grid">
+    <>
       <img className="product-image" src={cartItem.product.image} />
       <div className="cart-item-details">
         <div className="product-name">{cartItem.product.name}</div>
@@ -18,6 +18,6 @@ export function CartItemDetails({ cartItem }) {
           <span className="delete-quantity-link link-primary">Delete</span>
         </div>
       </div>
-    </div>
+    </>
   );
 }
