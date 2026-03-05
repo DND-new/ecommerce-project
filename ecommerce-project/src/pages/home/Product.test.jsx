@@ -49,7 +49,7 @@ describe("Product component", () => {
     expect(screen.getByText("87")).toBeInTheDocument();
   });
 
-  it("add product to cart", async () => {
+  it("adds product to cart", async () => {
     render(<Product product={product} loadCart={loadCart} />);
 
     const addToCartButton = screen.getByTestId("add-to-cart-button");

@@ -6,7 +6,7 @@ export function PaymentSummary({ paymentSummary, loadCart }) {
   const navigate = useNavigate();
 
   const placeOrder = async () => {
-    await axios.post("api/orders");
+    await axios.post("/api/orders");
     await loadCart();
     navigate("/orders");
   };
@@ -17,35 +17,38 @@ export function PaymentSummary({ paymentSummary, loadCart }) {
 
       {paymentSummary && (
         <>
-          <div className="payment-summary-row">
+          <div className="payment-summary-row" data-testid="payment1">
             <div>Items ({paymentSummary.totalItems}):</div>
             <div className="payment-summary-money">
               {formatMoney(paymentSummary.productCostCents)}
             </div>
           </div>
 
-          <div className="payment-summary-row">
+          <div className="payment-summary-row" data-testid="payment2">
             <div>Shipping &amp; handling:</div>
             <div className="payment-summary-money">
               {formatMoney(paymentSummary.shippingCostCents)}
             </div>
           </div>
 
-          <div className="payment-summary-row subtotal-row">
+          <div
+            className="payment-summary-row subtotal-row"
+            data-testid="payment3"
+          >
             <div>Total before tax:</div>
             <div className="payment-summary-money">
               {formatMoney(paymentSummary.totalCostBeforeTaxCents)}
             </div>
           </div>
 
-          <div className="payment-summary-row">
+          <div className="payment-summary-row" data-testid="payment4">
             <div>Estimated tax (10%):</div>
             <div className="payment-summary-money">
               {formatMoney(paymentSummary.taxCents)}
             </div>
           </div>
 
-          <div className="payment-summary-row total-row">
+          <div className="payment-summary-row total-row" data-testid="payment5">
             <div>Order total:</div>
             <div className="payment-summary-money">
               {formatMoney(paymentSummary.totalCostCents)}
@@ -54,6 +57,7 @@ export function PaymentSummary({ paymentSummary, loadCart }) {
 
           <button
             className="place-order-button button-primary"
+            data-testid="place-order-button"
             onClick={placeOrder}
           >
             Place your order
